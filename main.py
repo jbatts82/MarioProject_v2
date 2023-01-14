@@ -4,4 +4,10 @@
 # Description: Main Loop - Run from here...
 ###############################################################################
 
-print('Mario Project v2')
+import sys
+import states.app as app
+
+game_manager = app.GameManager()
+game_manager.main_loop()
+# if game loop breaks
+sys.exit()
