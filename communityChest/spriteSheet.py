@@ -13,10 +13,9 @@ class SpriteSheet:
         self.sheet = image
 
     def extract_image(self, x_pos, y_pos, width, height):
-        image = pygame.Surface([width, height])
+        image = pygame.Surface([width, height], pygame.SRCALPHA)
         rect = image.get_rect()
         image.blit(self.sheet, (0, 0), (x_pos, y_pos, width, height))
-        image.set_colorkey(const.BLACK)
         image = pygame.transform.scale(image,
                                        (int(rect.width * const.SIZE_MULTIPLIER),
                                         int(rect.height * const.SIZE_MULTIPLIER)))

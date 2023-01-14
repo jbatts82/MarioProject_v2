@@ -52,19 +52,20 @@ CAMERA_BORDERS = {
     'bottom': 150
 }
 
+TILE_SIZE = 64
 # x = column index * width
 # y = row index * height
 LEVEL_MAP = [
-    '            P               ',
-    '                            ',
-    '    X   E                   ',
-    '    X  XXXX           XX    ',
-    '   X                        ',
-    'XXXXX         XX         XX ',
-    'XXXXX P      XX              ',
-    'X XX XXXXXX  XX    XX  XX   ',
-    'X       X  XXXX    XX  XXX  ',
-    'X                          ',
+    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    'X       M                              X',
+    'X                                     X',
+    'X                                     X',
+    'X                                     X',
+    'X                                     X',
+    'X                                     X',
+    'X                                     X',
+    'X                                     X',
+    'X  G    X                             X',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
-TILE_SIZE = 64
+

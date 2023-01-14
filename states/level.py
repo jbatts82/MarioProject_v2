@@ -11,6 +11,8 @@
 import pygame
 import data.constants as const
 from data.block import Block
+from data.mushroom import Mushroom
+from data.goomba import Goomba
 
 
 class Level:
@@ -33,7 +35,10 @@ class Level:
                 y = row_index * const.TILE_SIZE
                 if col == 'X':
                     Block((x, y), [self.visible_sprites, self.collision_sprites])
-
+                if col == 'M':
+                    Mushroom((x, y), [self.visible_sprites, self.collision_sprites])
+                if col == 'G':
+                    Goomba((x, y), [self.visible_sprites, self.collision_sprites])
                 # if col == 'P':
                 #     self.player = Player((x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
                 # if col == 'E':
