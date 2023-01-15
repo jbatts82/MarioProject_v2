@@ -59,13 +59,13 @@ LEVEL_MAP = [
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
     'X                                     X',
     'X                                     X',
-    'X                                    X',
+    'X G                                   X',
     'X                                     X',
     'X                                     X',
-    'X   M                                  X',
+    'X   M                                 X',
     'X                                     X',
     'X                                     X',
-    'X       X                             X',
+    'X             X                       X',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
 

@@ -37,7 +37,8 @@ class Level:
                     Block((x, y), [self.visible_sprites, self.collision_sprites])
                 if col == 'M':
                     Mushroom((x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
-
+                if col == 'G':
+                    Goomba((x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
                 # if col == 'P':
                 #     self.player = Player((x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
                 # if col == 'E':
