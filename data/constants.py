@@ -57,15 +57,15 @@ TILE_SIZE = 64
 # y = row index * height
 LEVEL_MAP = [
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-    'X       M                              X',
     'X                                     X',
     'X                                     X',
+    'X                                    X',
     'X                                     X',
     'X                                     X',
+    'X   M                                  X',
     'X                                     X',
     'X                                     X',
-    'X                                     X',
-    'X  G    X                             X',
+    'X       X                             X',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
 

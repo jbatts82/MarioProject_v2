@@ -19,3 +19,4 @@ class Block(pygame.sprite.Sprite):
         self.image = self.image1[0]
         self.image.set_colorkey(const.UNUSED_COLOR)
         self.rect = self.image.get_rect(topleft=pos)
+        self.old_rect = self.rect.copy()

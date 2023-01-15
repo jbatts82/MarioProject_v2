@@ -36,9 +36,8 @@ class Level:
                 if col == 'X':
                     Block((x, y), [self.visible_sprites, self.collision_sprites])
                 if col == 'M':
-                    Mushroom((x, y), [self.visible_sprites, self.collision_sprites])
-                if col == 'G':
-                    Goomba((x, y), [self.visible_sprites, self.collision_sprites])
+                    Mushroom((x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
+
                 # if col == 'P':
                 #     self.player = Player((x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
                 # if col == 'E':
@@ -48,8 +47,7 @@ class Level:
         # run the entire game (level)
         self.active_sprites.update()
         self.visible_sprites.draw(self.display_surface)
-        # self.visible_sprites.custom_draw(self.player)
-        # self.visible_sprites.custom_draw(self.enemy)
+
 
 
 class CameraGroup(pygame.sprite.Group):
