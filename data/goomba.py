@@ -14,7 +14,6 @@ class Goomba(pygame.sprite.Sprite):
         super().__init__(groups)
         self.sprite_sheet = pygame.image.load(const.MISC3_LOC).convert_alpha()
         sprite_tool = SpriteSheet(self.sprite_sheet)
-
         self.walking_frames = []
         self.stomped_frame = []
         self.frame_idx = 0
@@ -24,11 +23,8 @@ class Goomba(pygame.sprite.Sprite):
         self.image = self.walking_frames[0]
         self.animation_cooldown = 250
         self.rect = self.image.get_rect(topleft=pos)
-
         self.pos = pygame.math.Vector2(self.rect.topleft)
         self.old_rect = self.rect.copy()
-
-        # player movement
         self.direction = pygame.math.Vector2()
         self.speed = 4
         self.gravity = 0.8
@@ -50,17 +46,14 @@ class Goomba(pygame.sprite.Sprite):
             self.image = self.walking_frames[self.frame_idx]
 
 
-
     def update(self):
         # x-axis movements
         self.pos.x += self.direction.x * self.speed
         self.rect.x = round(self.pos.x)
         self.horizontal_collisions()
-
         # y-axis movements
         self.apply_gravity()
         self.vertical_collisions()
-
         self.update_animation()
 
     # Collision Notes
@@ -76,7 +69,6 @@ class Goomba(pygame.sprite.Sprite):
                     self.rect.right = sprite.rect.left
                     self.pos.x = self.rect.x
                     self.direction.x *= -1
-                    print(self.direction.x)
                 elif self.direction.x < 0:  # moving left
                     # bump right side of mushroom
                     self.rect.left = sprite.rect.right
@@ -101,4 +93,3 @@ class Goomba(pygame.sprite.Sprite):
     def apply_gravity(self):
         self.direction.y += self.gravity
         self.rect.y += self.direction.y
-

@@ -50,22 +50,16 @@ class Mushroom(pygame.sprite.Sprite):
         self.old_rect = self.rect.copy()
         for sprite in self.collision_sprites.sprites():
             if sprite.rect.colliderect(self.rect):
-                print(self.direction.x)
-                print(self.pos)
                 if self.direction.x > 0:  # moving right
                     # bump left side of mushroom
                     self.rect.right = sprite.rect.left
                     self.pos.x = self.rect.x
                     self.direction.x *= -1
-                    print(self.direction.x)
-                    print('right side collision')
                 elif self.direction.x < 0:  # moving left
                     # bump right side of mushroom
                     self.rect.left = sprite.rect.right
                     self.pos.x = self.rect.x
                     self.direction.x *= -1
-                    print('left side collision')
-
 
 
     def vertical_collisions(self):
