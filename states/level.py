@@ -25,6 +25,7 @@ class Level:
         self.visible_sprites = CameraGroup()  # draws anything
         self.active_sprites = pygame.sprite.Group()  # updates anything
         self.collision_sprites = pygame.sprite.Group()  # collidbles
+        self.enemy_sprites = pygame.sprite.Group()  # enemies Mario can interact with
 
         self.player = None
         self.setup_level()
@@ -40,15 +41,24 @@ class Level:
                 if col == 'M':
                     Mushroom((x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
                 if col == 'G':
-                    Goomba((x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
+                    Goomba((x, y), [self.visible_sprites, self.active_sprites, self.enemy_sprites], self.collision_sprites)
                 if col == 'P':
                     self.player = Mario((x, y), [self.visible_sprites], self.collision_sprites)
+
+    def check_enemy_collisions(self):
+        for enemy in self.enemy_sprites:
+            if self.player.rect.colliderect(enemy.rect):
+                # stomp: mario falling and feet hit top half of goomba
+                if self.player.direction.y > 0 and self.player.rect.bottom <= enemy.rect.centery + 10:
+                    enemy.stomp()
+                    self.player.direction.y = -8  # bounce
 
     def run(self, keys):
         # run the entire game (level)
         self.active_sprites.update()
         if self.player:
             self.player.update(keys)
+            self.check_enemy_collisions()
         self.visible_sprites.custom_draw(self.player)
 
 

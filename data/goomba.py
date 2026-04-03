@@ -33,7 +33,14 @@ class Goomba(pygame.sprite.Sprite):
         self.collision_sprites = collision_sprites
         self.on_floor = False
         self.last_update = pygame.time.get_ticks()
+        self.stomped = False
+        self.stomp_timer = 0
 
+    def stomp(self):
+        self.stomped = True
+        self.stomp_timer = pygame.time.get_ticks()
+        self.direction.x = 0
+        self.image = self.stomped_frame[0]
 
     def update_animation(self):
         # update animation
@@ -45,8 +52,12 @@ class Goomba(pygame.sprite.Sprite):
                 self.frame_idx = 0
             self.image = self.walking_frames[self.frame_idx]
 
-
     def update(self):
+        if self.stomped:
+            if pygame.time.get_ticks() - self.stomp_timer >= 500:
+                self.kill()
+            return
+
         # x-axis movements
         self.pos.x += self.direction.x * self.speed
         self.rect.x = round(self.pos.x)
