@@ -13,6 +13,7 @@ import data.constants as const
 from data.block import Block
 from data.mushroom import Mushroom
 from data.goomba import Goomba
+from data.mario import Mario
 
 
 class Level:
@@ -21,10 +22,11 @@ class Level:
         self.display_surface = pygame.display.get_surface()
 
         # sprite group setup
-        self.visible_sprites = pygame.sprite.Group()  # draws anything
+        self.visible_sprites = CameraGroup()  # draws anything
         self.active_sprites = pygame.sprite.Group()  # updates anything
         self.collision_sprites = pygame.sprite.Group()  # collidbles
 
+        self.player = None
         self.setup_level()
 
     def setup_level(self):
@@ -39,15 +41,15 @@ class Level:
                     Mushroom((x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
                 if col == 'G':
                     Goomba((x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
-                # if col == 'P':
-                #     self.player = Player((x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
-                # if col == 'E':
-                #     self.enemy = Enemy((x, y), [self.visible_sprites, self.active_sprites], self.collision_sprites)
+                if col == 'P':
+                    self.player = Mario((x, y), [self.visible_sprites], self.collision_sprites)
 
-    def run(self):
+    def run(self, keys):
         # run the entire game (level)
         self.active_sprites.update()
-        self.visible_sprites.draw(self.display_surface)
+        if self.player:
+            self.player.update(keys)
+        self.visible_sprites.custom_draw(self.player)
 
 
 

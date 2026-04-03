@@ -26,6 +26,11 @@ MISC3_LOC = 'resources/graphics/misc-3.gif'
 SIZE_MULTIPLIER = 4
 ANIMATION_COOLDOWN = 150
 
+# mario physics
+GRAVITY = 0.8
+JUMP_VEL = -16
+MARIO_SPEED = 6
+
 # mario states
 STAND = 'standing'
 WALK = 'walk'
@@ -65,7 +70,7 @@ LEVEL_MAP = [
     'X   M                                 X',
     'X                                     X',
     'X     G            X                   X',
-    'X                  X     M             X',
+    'X P                X     M             X',
     'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
 

@@ -33,8 +33,9 @@ class GameManager:
         print("main_loop")
         while self.run_game:
             self.process_events()
+            self.keys = pygame.key.get_pressed()
             self.screen.fill(const.BLUE)
-            self.level.run()
+            self.level.run(self.keys)
             pygame.display.flip()
             self.clock.tick(const.FPS)
 
